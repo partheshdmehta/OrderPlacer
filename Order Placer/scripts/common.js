@@ -28,7 +28,6 @@ function hideLoader(div) {
 };
 
 function customAlert(message) {
-    debugger;
     navigator.notification.alert(
         message, // message
         alertDismissed, // callback
