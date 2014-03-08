@@ -5,5 +5,20 @@
         <title></title>
     </head>
     <body>
+        <div id="tabstrip-home" data-role="view" data-title="Sterling" data-before-show="cleanview"  data-show="showOrderList">
+            <div id='orderlistDiv'>
+                <ul id="todoItems"></ul>
+            </div>
+        </div>
+        <!--Layout-->
+        <div data-role="layout" data-id="tabstrip-layout">
+            <!--Header-->
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                    <a  data-role="button" href="ordermanagement.html" data-align="right" data-icon="add"></a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

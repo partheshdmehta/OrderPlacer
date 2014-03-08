@@ -1,3 +1,12 @@
+function cleanview() {
+    //alert('cleanview');
+    $("div[data-role=view]").each(function(i, elem) {
+        if ($(elem).attr("data-url") && ($(elem).attr("data-url") != window.location.href.split('#')[1].split('?')[0] && $(elem).attr("data-url") != window.location.href.split('#')[1])) {
+            $(elem).remove();
+        }
+    });
+}
+
 //to navigate to different page
 function navigate(pagePath) {
     app.navigate(pagePath); 
@@ -19,6 +28,7 @@ function hideLoader(div) {
 };
 
 function customAlert(message) {
+    debugger;
     navigator.notification.alert(
         message, // message
         alertDismissed, // callback
@@ -28,4 +38,8 @@ function customAlert(message) {
 }
 
 function alertDismissed() {
+}
+
+function GetXMLAttributeValue(obj, attribute) {
+    return $(obj).attr(attribute).trim();
 }

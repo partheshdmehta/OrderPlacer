@@ -16,13 +16,12 @@
         <script src="../kendo/js/jquery.min.js"></script>
         <script src="../kendo/js/kendo.mobile.min.js"></script>
         <script src="../scripts/common.js"></script>
+        <script src="../scripts/localdb.js"></script>
+        <script src="../scripts/order.js"></script>
         <script>
-            var app = new kendo.mobile.Application(document.body, { transition: "slide"});
             $(document).ready(function() {
-                showLoader();
                 setTimeout(function() {
-                    navigator.splashscreen.hide();
-                    navigate("../Order/order.html");
+                    initLocalDB();
                 }, 2000);
             });
         </script>
