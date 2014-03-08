@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link href="../kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+        <link href="../styles/main.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div data-role="view" data-layout="blank" class="splashBackground">
+        </div>
+        <section data-role="layout" data-id="blank">
+        </section>
+        <script src="../cordova.js"></script>
+        <script src="../kendo/js/jquery.min.js"></script>
+        <script src="../kendo/js/kendo.mobile.min.js"></script>
+        <script src="../scripts/common.js"></script>
+        <script>
+            var app = new kendo.mobile.Application(document.body, { transition: "slide"});
+            $(document).ready(function() {
+                showLoader();
+                setTimeout(function() {
+                    navigator.splashscreen.hide();
+                    navigate("../Order/order.html");
+                }, 2000);
+            });
+        </script>
+    </body>
+</html>
