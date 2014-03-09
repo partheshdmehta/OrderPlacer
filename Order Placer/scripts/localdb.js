@@ -1,17 +1,24 @@
 var app = new kendo.mobile.Application(document.body, {layout: "tabstrip-layout", transition: "slide"});
+
 app.db = null;
 
+app.onSuccess = function(tx, r) {
+    //customAlert("onSuccess");    
+}
+
 app.onError = function(tx, e) {
+    hideLoader();
     customAlert("The following error occured: " + e.message);
 } 
 
 function initLocalDB() {
     showLoader();
     app.openDb();
-    //createOrderTable();
-    //createOrderItemTable();
     app.createItemTable();
     app.itemFill();
+    app.createCustomerTable();
+    app.createOrderTable();
+    app.createOrderItemTable();
 }
 
 app.openDb = function() {
@@ -19,9 +26,9 @@ app.openDb = function() {
         if (window.navigator.simulator === true) {
             // For debugin in simulator fallback to native SQL Lite
             console.log("Use built in SQL Lite");
-            app.db = window.openDatabase("Todo", "1.0", "Cordova Demo", 200000);
+            app.db = window.openDatabase("orderplacer", "1.0", "Cordova Demo", 200000);
         } else {
-            app.db = window.sqlitePlugin.openDatabase("Todo");
+            app.db = window.sqlitePlugin.openDatabase("orderplacer");
         }
     } catch (err) { 					
         customAlert("The following error occured: " + err.message);        
@@ -30,25 +37,35 @@ app.openDb = function() {
 
 app.createItemTable = function() {
     try {
-        var db = app.db;
-        db.transaction(function(tx) {
+        app.db.transaction(function(tx) {
             tx.executeSql("CREATE TABLE IF NOT EXISTS item(itemno TEXT, description TEXT, price TEXT)", []);
         });
     } catch (err) { 					
         customAlert("The following error occured: " + err.message);        
-    }
+    }    
 }
 
 app.itemFill = function() {
     try {
-        $.get("../data/itemlist.xml", {}, function (xml) {
-            $('ITEM', xml).each(function () {
-                app.addItem(GetXMLAttributeValue(this, 'ITEMNO'), GetXMLAttributeValue(this, 'DESC'), GetXMLAttributeValue(this, 'PRICE'));            
-            });
-            hideLoader();
-            //navigator.splashscreen.hide();
-            navigate("../Order/order.html");
-        });
+        //check whether item exists or not
+        var render = function (tx, rs) {
+            alert(rs.rows.item(0).totalRecord);
+            if (rs.rows.item(0).totalRecord == 0) {
+                $.get("../data/itemlist.min.xml", {}, function (xml) {
+                    $('ITEM', xml).each(function () {
+                        app.addItem(GetXMLAttributeValue(this, 'ITEMNO'), GetXMLAttributeValue(this, 'DESC'), GetXMLAttributeValue(this, 'PRICE'));            
+                    });
+                    hideLoader();
+                    navigate("../Order/order.html");
+                });        
+            } else {
+                hideLoader();
+                navigate("../Order/order.html");
+            }
+        }            
+        app.db.transaction(function(tx) {    
+            tx.executeSql("SELECT COUNT(*) AS totalRecord FROM item", [], render, app.onError);
+        });        
     } catch (err) { 					
         customAlert("The following error occured: " + err.message);        
     }
@@ -56,8 +73,7 @@ app.itemFill = function() {
 
 app.addItem = function(itemNo, description, price) {
     try {
-        var db = app.db;
-        db.transaction(function(tx) {
+        app.db.transaction(function(tx) {
             tx.executeSql("INSERT INTO item(itemno, description, price) VALUES (?,?,?)",
                           [itemNo, description, price],
                           app.onSuccess,
@@ -85,8 +101,7 @@ app.itemSelectAll = function() {
             hideLoader();
         }
     
-        var db = app.db;
-        db.transaction(function(tx) {    
+        app.db.transaction(function(tx) {    
             tx.executeSql("SELECT * FROM item", [], render, app.onError);
         });
     } catch (err) { 					
@@ -94,29 +109,26 @@ app.itemSelectAll = function() {
     }
 }
 
+app.createCustomerTable = function() {
+    app.db.transaction(function(tx) {
+        tx.executeSql("CREATE TABLE IF NOT EXISTS customer(IDCUST TEXT PRIMARY KEY ASC, NAMECUST TEXT, ADDRESS TEXT)", []);
+    });
+}
+
 app.createOrderTable = function() {
-    var db = app.db;
-    db.transaction(function(tx) {
-        tx.executeSql("CREATE TABLE IF NOT EXISTS order(ID INTEGER PRIMARY KEY ASC, todo TEXT, added_on DATETIME)", []);
+    app.db.transaction(function(tx) {
+        tx.executeSql("CREATE TABLE IF NOT EXISTS order(ORDERNO TEXT PRIMARY KEY ASC, IDCUST TEXT, NAMECUST TEXT, DATE DATETIME, AMOUNT TEXT)", []);
     });
 }
 
 app.createOrderItemTable = function() {
-    var db = app.db;
-    db.transaction(function(tx) {
-        tx.executeSql("CREATE TABLE IF NOT EXISTS orderitem(ID INTEGER PRIMARY KEY ASC, todo TEXT, added_on DATETIME)", []);
+    app.db.transaction(function(tx) {
+        tx.executeSql("CREATE TABLE IF NOT EXISTS orderitem(ORDERNO TEXT, ITEMNO TEXT, DESCRIPTION TEXT, QTY TEXT, PRICE TEXT)", []);
     });
 }
 
-app.deleteOrderItem = function(id) {
-    var db = app.db;
-    db.transaction(function(tx) {
-        tx.executeSql("DELETE FROM todo WHERE ID=?", [id],
-                      app.onSuccess,
-                      app.onError);
+app.deleteOrderItem = function(itenNo) {
+    app.db.transaction(function(tx) {
+        tx.executeSql("DELETE FROM orderitem WHERE ITEMNO=?", [itenNo], app.onSuccess, app.onError);
     });
-}
-
-app.onSuccess = function(tx, r) {
-    //app.refresh();
 }

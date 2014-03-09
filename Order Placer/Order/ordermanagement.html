@@ -5,5 +5,20 @@
         <title></title>
     </head>
     <body>
+        <div id="tabstrip-home" data-role="view" data-title="Order Detail" data-before-show="cleanview">
+            <div id='orderlistDiv'>
+            </div>
+        </div>
+        <!--Layout-->
+        <div data-role="layout" data-id="tabstrip-layout">
+            <!--Header-->
+            <div data-role="header">
+                <div data-role="navbar">
+                    <a data-role="backbutton" data-align="left" data-icon="back">Back</a>
+                    <span data-role="view-title"></span>
+                    <a data-role="button" data-align="right" href="../Order/order.html">Save</a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
