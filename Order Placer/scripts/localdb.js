@@ -58,9 +58,12 @@ app.itemFill = function() {
         var render = function (tx, rs) {
             alert(rs.rows.item(0).totalRecord);
             if (rs.rows.item(0).totalRecord == 0) {
-                for (var i = 0; i < 10000; i++) {
-                    app.addItem("item-" + (i + 1), "desc-" + (i + 1), (i + 1) * 100);
+                for (var i = 0; i < itemlist.length; i++) {
+                    app.addItem(itemlist[i].ITEMNO, itemlist[i].DESC, itemlist[i].PRICE);
                 }
+                /*for (var i = 0; i < 10000; i++) {
+                app.addItem("item-" + (i + 1), "desc-" + (i + 1), (i + 1) * 100);
+                }*/
                 hideLoader();
                 navigate("../Order/order.html");
                 /*var fileName = "../data/itemlist.xml";
