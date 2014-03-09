@@ -51,7 +51,11 @@ app.itemFill = function() {
         var render = function (tx, rs) {
             alert(rs.rows.item(0).totalRecord);
             if (rs.rows.item(0).totalRecord == 0) {
-                $.get("../data/itemlist.min.xml", {}, function (xml) {
+                var fileName="../data/itemlist.xml";
+                if (window.navigator.simulator === true) {
+                    fileName = "../data/itemlist.min.xml";
+                }
+                $.get(fileName, {}, function (xml) {
                     $('ITEM', xml).each(function () {
                         app.addItem(GetXMLAttributeValue(this, 'ITEMNO'), GetXMLAttributeValue(this, 'DESC'), GetXMLAttributeValue(this, 'PRICE'));            
                     });
