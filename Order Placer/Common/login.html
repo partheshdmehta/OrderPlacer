@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <!--Layout-->
+        <div data-role="layout" data-id="tabstrip-layout">
+            <!--Header-->
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                    <a  data-role="button" data-align="right" data-click="onlogin">Login</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="tabstrip-login" data-role="view" data-title="Login" data-before-show="cleanview">
+            <div id='orderlistDiv'>
+            </div>
+        </div>
+
+        <script src="../scripts/authentication.js"></script>
+    </body>
+</html>

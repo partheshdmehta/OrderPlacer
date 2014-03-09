@@ -21,7 +21,8 @@
         <script>
             $(document).ready(function() {
                 setTimeout(function() {
-                    initLocalDB();
+                    navigator.splashscreen.hide();
+                    navigate("login.html");
                 }, 2000);
             });
         </script>

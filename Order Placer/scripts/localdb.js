@@ -1,12 +1,9 @@
 var app = new kendo.mobile.Application(document.body, {layout: "tabstrip-layout", transition: "slide"});
-
 app.db = null;
 
 app.onError = function(tx, e) {
     customAlert("The following error occured: " + e.message);
 } 
-
-
 
 function initLocalDB() {
     showLoader();
@@ -49,7 +46,7 @@ app.itemFill = function() {
                 app.addItem(GetXMLAttributeValue(this, 'ITEMNO'), GetXMLAttributeValue(this, 'DESC'), GetXMLAttributeValue(this, 'PRICE'));            
             });
             hideLoader();
-            navigator.splashscreen.hide();
+            //navigator.splashscreen.hide();
             navigate("../Order/order.html");
         });
     } catch (err) { 					
