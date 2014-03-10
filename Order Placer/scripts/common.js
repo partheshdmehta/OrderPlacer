@@ -1,7 +1,7 @@
 function cleanview() {
     //alert('cleanview');
     $("div[data-role=view]").each(function(i, elem) {
-        if ($(elem).attr("data-url") && ($(elem).attr("data-url") != window.location.href.split('#')[1].split('?')[0] && $(elem).attr("data-url") != window.location.href.split('#')[1])) {
+        if ($(elem).attr("data-url") && ($(elem).attr("data-url") !== window.location.href.split('#')[1].split('?')[0] && $(elem).attr("data-url") !== window.location.href.split('#')[1])) {
             $(elem).remove();
         }
     });
@@ -13,7 +13,7 @@ function navigate(pagePath) {
 }
 
 function showLoader(div) { 
-    if (div != undefined)
+    if (div !== undefined)
         $("#" + div).hide();
     $(document.body).append($('<div id="overlay" class="overlayeffect"></div>'));
     app.showLoading();     
@@ -23,7 +23,7 @@ function showLoader(div) {
 function hideLoader(div) {    
     $("#overlay").remove();
     app.hideLoading();
-    if (div != undefined)
+    if (div !== undefined)
         $("#" + div).show();
 };
 

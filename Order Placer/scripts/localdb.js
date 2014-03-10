@@ -1,26 +1,23 @@
-var app = new kendo.mobile.Application(document.body, {layout: "tabstrip-layout", transition: "slide"});
-
 app.db = null;
-
+//----------------------------------------------- Common Start -----------------------------------------------------------------------
 app.onSuccess = function(tx, r) {
     //customAlert("onSuccess");    
 }
 
 app.onError = function(tx, e) {
-    debugger;
     hideLoader();
     customAlert("The following error occured: " + e.message);
 } 
 
-function initLocalDB() {
+app.initLocalDB = function () {
     try {
         showLoader();
         app.openDb();
-        app.createItemTable();
-        app.itemFill();
+        /*app.createItemTable();
+        app.itemFill();*/
         //app.createCustomerTable();
         //app.deleteOrderTable();
-        //app.createOrderTable();
+        app.createOrderTable();
         //app.orderFill();
         //app.createOrderItemTable();
     } catch (err) { 					
@@ -33,7 +30,7 @@ app.openDb = function() {
         if (window.navigator.simulator === true) {
             // For debugin in simulator fallback to native SQL Lite
             console.log("Use built in SQL Lite");
-            app.db = window.openDatabase("orderplacer", "1.0", "Cordova Demo", 200000);
+            app.db = window.openDatabase("orderplacer", "1.0", "orderplacer", 200000);
         } else {
             app.db = window.sqlitePlugin.openDatabase("orderplacer");
         }
@@ -41,7 +38,154 @@ app.openDb = function() {
         customAlert("The following error occured: " + err.message);        
     }
 }
+//----------------------------------------------- Common End -----------------------------------------------------------------------
 
+//----------------------------------------------- Order Table Start -----------------------------------------------------------------------
+app.createOrderTable = function() {
+    try {
+        app.db.transaction(function(tx) {
+            tx.executeSql("CREATE TABLE IF NOT EXISTS orders(orderno TEXT, idcust TEXT, namecust TEXT, date DATE, amount TEXT)", []);
+        });
+    } catch (err) { 					
+        customAlert("The following error occured: " + err.message);        
+    }
+}
+
+app.orderFill = function() {
+    try {
+        var render = function (tx, rs) {
+            //alert(rs.rows.item(0).totalRecord);
+            if (rs.rows.item(0).totalRecord === 0) {
+                for (var i = 0; i < 15; i++) {
+                    app.addOrder("O-" + (i + 1), "custID-" + (i + 1), "custName-" + (i + 1), new Date(), (i + 1) * 100);
+                }     
+            } 
+            hideLoader();
+            navigate("../Order/order.html");
+        }        
+        app.db.transaction(function(tx) {    
+            tx.executeSql("SELECT COUNT(*) AS totalRecord FROM orders", [], render, app.onError);
+        });
+    } catch (err) { 					
+        customAlert("The following error occured: " + err.message);        
+    }     
+}
+
+app.orderSelectAll = function() {
+    try {
+        //debugger;
+        showLoader();
+        var render = function (tx, rs) {
+            //debugger;
+            var orderlist = [];
+            for (var i = 0; i < rs.rows.length; i++) {
+                var orderObj = new Object();
+                orderObj.ORDERNO = rs.rows.item(i).orderno;
+                orderObj.CUSTOMERNAME = rs.rows.item(i).namecust;
+                orderObj.DATE = rs.rows.item(i).date;
+                orderObj.AMOUNT = rs.rows.item(i).amount;
+                orderlist.push(orderObj);
+            }
+            $("#orderlistDiv").html(kendo.template($("#order-list-template").html(), {useWithBlock:false})(orderlist));
+            hideLoader();
+        }    
+        app.db.transaction(function(tx) {    
+            tx.executeSql("SELECT * FROM orders", [], render, app.onError);
+        });
+    } catch (err) { 					
+        customAlert("The following error occured: " + err.message);        
+    }
+}
+
+app.addOrder = function(orderno, idcust, namecust, date, amount) {
+    try {
+        app.db.transaction(function(tx) {
+            tx.executeSql("INSERT INTO orders(orderno, idcust, namecust, date, amount) VALUES (?,?,?,?,?)",
+                          [orderno, idcust, namecust, date, amount], app.onSuccess, app.onError);
+        });
+    } catch (err) { 					
+        customAlert("The following error occured: " + err.message);        
+    }
+}
+
+app.deleteOrder = function(orderNo) {
+    try {
+        app.db.transaction(function(tx) {
+            tx.executeSql("DELETE FROM orders WHERE orderno=?", [orderNo]
+                          , app.onSuccess
+                          , app.onError);
+        });
+    } catch (err) { 					
+        customAlert("The following error occured: " + err.message);        
+    }
+}
+
+app.dropOrderTable = function() {
+    try {
+        app.db.transaction(function(tx) {
+            tx.executeSql("DROP TABLE order", [], app.onSuccess, app.onError);
+        });
+    } catch (err) { 					
+        customAlert("The following error occured: " + err.message);        
+    }
+}
+//----------------------------------------------- Order Table End -----------------------------------------------------------------------
+
+//----------------------------------------------- Order Item Table Start -----------------------------------------------------------------------
+app.createOrderItemTable = function() {
+    try {
+        app.db.transaction(function(tx) {
+            tx.executeSql("CREATE TABLE IF NOT EXISTS orderitems(orderno TEXT, itemno TEXT, description TEXT, qty TEXT, price TEXT)", []);
+        });
+    } catch (err) { 					
+        customAlert("The following error occured: " + err.message);        
+    }
+}
+
+app.deleteOrderItem = function(orderNo, itenNo) {
+    try {
+        app.db.transaction(function(tx) {
+            tx.executeSql("DELETE FROM orderitems WHERE orderno=? AND itemno=?", [orderNo, itenNo], app.onSuccess, app.onError);
+        });
+    } catch (err) { 					
+        customAlert("The following error occured: " + err.message);        
+    }
+}
+
+app.dropeOrderItemTable = function() {
+    try {
+        app.db.transaction(function(tx) {
+            tx.executeSql("DROP TABLE orderitems", []);
+        });
+    } catch (err) { 					
+        customAlert("The following error occured: " + err.message);        
+    }
+}
+//----------------------------------------------- Order Item Table End -----------------------------------------------------------------------
+
+//----------------------------------------------- Customer Table Start -----------------------------------------------------------------------
+app.createCustomerTable = function() {
+    try {
+        app.db.transaction(function(tx) {
+            tx.executeSql("CREATE TABLE IF NOT EXISTS customers(idcust TEXT PRIMARY KEY ASC, namecust TEXT, address TEXT)", []);
+        });
+    } catch (err) { 					
+        customAlert("The following error occured: " + err.message);        
+    }
+}
+
+app.dropCustomerTable = function() {
+    try {
+        app.db.transaction(function(tx) {
+            tx.executeSql("DROP TABLE customers", []);
+        });
+    } catch (err) { 					
+        customAlert("The following error occured: " + err.message);        
+    }
+}
+//----------------------------------------------- Customer Table End -----------------------------------------------------------------------
+
+//----------------------------------------------- Item Table Start -----------------------------------------------------------------------
 app.createItemTable = function() {
     try {
         app.db.transaction(function(tx) {
@@ -129,127 +273,4 @@ app.itemSelectAll = function() {
         customAlert("The following error occured: " + err.message);        
     }
 }
-
-app.createCustomerTable = function() {
-    app.db.transaction(function(tx) {
-        tx.executeSql("CREATE TABLE IF NOT EXISTS customer(idcust TEXT PRIMARY KEY ASC, namecust TEXT, address TEXT)", []);
-    });
-}
-
-app.createOrderTable = function() {
-    try {
-        app.db.transaction(function(tx) {
-            debugger;
-            tx.executeSql("CREATE TABLE IF NOT EXISTS order(orderno TEXT, idcust TEXT, namecust TEXT, date DATE, amount TEXT)", []);
-        });
-    } catch (err) { 					
-        customAlert("The following error occured: " + err.message);        
-    }
-}
-
-app.orderFill = function() {
-    try {
-        var render = function (tx, rs) {
-            debugger;
-            alert(rs.rows.item(0).totalRecord);
-            if (rs.rows.item(0).totalRecord == 0) {
-                for (var i = 0; i < 2; i++) {
-                    debugger;
-                    app.addOrder("O-" + (i + 1), "custID-" + (i + 1), "custName-" + (i + 1), new Date(), (i + 1) * 100);
-                }
-                hideLoader();
-                navigate("../Order/order.html");       
-            } else {
-                hideLoader();
-                navigate("../Order/order.html");
-            }            
-        }
-        
-        /*app.db.transaction(function(tx) {
-        debugger;
-        tx.executeSql("DELETE FROM order", [], app.onSuccess, app.onError);
-        });*/
-        app.db.transaction(function(tx) {    
-            debugger;
-            tx.executeSql("SELECT COUNT(*) AS totalRecord FROM order", [], render, app.onError);
-        });
-    } catch (err) { 					
-        customAlert("The following error occured: " + err.message);        
-    }     
-}
-
-app.orderSelectAll = function() {
-    try {
-        debugger;
-        showLoader();
-        var renderTodo = function (row) {
-            return "<li>" + "<div class='todo-check'></div>" + row.orderno + " : " + row.amount + "<a class='button delete' href='javascript:void(0);'  onclick='app.deleteTodo(" + row.ID + ");'><p class='todo-delete'></p></a>" + "<div class='clear'></div>" + "</li>";
-        }
-    
-        var render = function (tx, rs) {
-            debugger;
-            var rowOutput = "";
-            var todoItems = document.getElementById("todoItems");
-            for (var i = 0; i < rs.rows.length; i++) {
-                rowOutput += renderTodo(rs.rows.item(i));
-            }
-            todoItems.innerHTML = rowOutput;
-            hideLoader();
-        }
-    
-        app.db.transaction(function(tx) {    
-            tx.executeSql("SELECT * FROM order", [], render, app.onError);
-        });
-    } catch (err) { 					
-        customAlert("The following error occured: " + err.message);        
-    }
-}
-
-app.addOrder = function(orderno, idcust, namecust, date, amount) {
-    try {
-        app.db.transaction(function(tx) {
-            tx.executeSql("INSERT INTO order(orderno, idcust, namecust, date, amount) VALUES (?,?,?,?,?)",
-                          [orderno, idcust, namecust, date, amount],
-                          app.onSuccess,
-                          app.onError);
-        });
-    } catch (err) { 					
-        customAlert("The following error occured: " + err.message);        
-    }
-}
-
-app.deleteOrderTable = function() {
-    try {
-        app.db.transaction(function(tx) {
-            debugger;
-            tx.executeSql("DROP TABLE order", [], app.onSuccess, app.onError);
-        });
-    } catch (err) { 					
-        debugger;
-        customAlert("The following error occured: " + err.message);        
-    }
-}
-
-app.deleteOrderItemTable = function() {
-    app.db.transaction(function(tx) {
-        tx.executeSql("DROP TABLE orderitem", []);
-    });
-}
-
-app.deleteCustomerTable = function() {
-    app.db.transaction(function(tx) {
-        tx.executeSql("DROP TABLE customer", []);
-    });
-}
-
-app.createOrderItemTable = function() {
-    app.db.transaction(function(tx) {
-        tx.executeSql("CREATE TABLE IF NOT EXISTS orderitem(orderno TEXT, itemno TEXT, description TEXT, qty TEXT, price TEXT)", []);
-    });
-}
-
-app.deleteOrderItem = function(itenNo) {
-    app.db.transaction(function(tx) {
-        tx.executeSql("DELETE FROM orderitem WHERE ITEMNO=?", [itenNo], app.onSuccess, app.onError);
-    });
-}
+//----------------------------------------------- Item Table End -----------------------------------------------------------------------

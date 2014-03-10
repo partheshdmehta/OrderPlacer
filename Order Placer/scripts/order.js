@@ -1,6 +1,5 @@
 function showOrderList() {
-    //app.itemSelectAll();
-    onsearchitem();
+    app.orderSelectAll();
 }
 
 function onsearchitem() {

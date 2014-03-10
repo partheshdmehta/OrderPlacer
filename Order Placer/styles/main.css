@@ -1,11 +1,1708 @@
+body, html
+{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* COMMON STYLES*/
+.view-content h1
+{
+    color: #42454a;
+    font-size: 1.8em;
+}
+
+.view-content h1.welcome
+{
+    text-align: center;
+}
+
+.view-content h3
+{
+    color: #42454a;
+    font-size: 1.1em;
+}
+
+.view-content p
+{
+    color: #4a4e54;
+    font-size: 1em;
+}
+
+/* IMAGE STYLES*/
+.img
+{
+    background-image: url(../styles/images/appbuilder.png);
+    background-repeat: no-repeat;
+    text-align: center;
+    width: 320px;
+    height: 193px;
+    margin: 0px auto;
+}
+
+.logo
+{
+    background-image: url(../styles/images/logo.png);
+    background-repeat: no-repeat;
+    width: 319px;
+    height: 60px;
+    margin: 40px auto;
+}
+
+/* BUTTON STYLES*/
+.buttonArea
+{
+    text-align: center;
+}
+
+.login-button
+{
+    width: 50%;
+    max-width: 300px;
+    font-size: .9em;
+    -webkit-appearance: none;
+}
+
+/* MAP STYLES*/
+#no-map
+{
+    position: absolute;
+    margin: 0 auto;
+    top: 40%; 
+    text-align: center;
+}
+
+#map-canvas
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#map-search-wrap
+{
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 3px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+#map-address
+{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 3px 50px 0px 50px;
+    background-color: #fff;
+    font-style: italic;
+    color: #000;
+    padding: 7px 10px;
+    border-radius: 3em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(180, 180, 180);
+    border-bottom-color: rgb(255, 255, 255);
+    box-shadow: 0 -1px 0 #3C3C3C;
+    -moz-background-clip: border-box;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+}
+
+#map-search
+{
+    float: right;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    border: none;
+    background: none;
+    background-image: url(../styles/images/search.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#map-search:active
+{
+    background-image: url(../styles/images/search_active.png);
+    background-repeat: no-repeat;
+}
+
+#map-navigate-home
+{
+    float: left;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    border: none;
+    background: none;
+    background-image: url(../styles/images/location.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#map-navigate-home:active
+{
+    background-image: url(../styles/images/location_active.png);
+    background-repeat: no-repeat;
+}
+
+/* WEATHER STYLES*/
+.weather
+{
+    padding-top: 50px;
+}
+
+.weather .weather-title
+{
+    color: #fff;
+    font-size: 1.5em;
+    line-height: 1.2em;
+    text-shadow: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+}
+
+.weather-info
+{
+    color: #fff;
+    font-size: 1.2em;
+    text-shadow: none;
+    line-height: 1.8em;
+    display: inline-block;
+}
+
+.weather-info.date
+{
+    margin-top: 7px;
+}
+
+.weather-info.temperature
+{
+    margin-left: 5px;
+}
+
+.weather-info.temperature.low
+{
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* Weather Icons*/
+.weather-icon
+{
+    width: 64px;
+    height: 64px;
+    background-image: url(../styles/images/sprite-weather.png);
+    background-repeat: no-repeat;
+    float: right;
+    position: relative;
+    top: -6px;
+    left: -10px;
+}
+
+.weather-icon.sunny
+{
+    background-position: 0px 0px;
+}
+
+.weather-icon.cloudy
+{
+    background-position: 0px -64px;
+}
+
+.weather-icon.partly-cloudy
+{
+    background-position: 0px -128px;
+}
+
+.weather-icon.partly-sunny
+{
+    background-position: 0px -192px;
+}
+
+.weather-icon.shower
+{
+    background-position: 0px -256px;
+}
+
+.weather-icon.foggy
+{
+    background-position: 0px -320px;
+}
+
+.weather-icon.storm
+{
+    background-position: 0px -384px;
+}
+
+.position-left
+{
+    float: left;
+}
+
+.position-right
+{
+    float: right;
+}
+
+.position.center
+{
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* DEVICE SPECIFIC STYLES*/
+#skin-change
+{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.km-ios .km-listview-wrapper .km-listinset li
+{
+    background-color: #fff;
+    border-color: #ababab;
+}
+
+.km-ios .km-view .km-content
+{
+    background-image: none;
+    background: #f0f0f0;
+}
+
+.km-tablet .km-ios .km-navbar .km-view-title
+{
+    color: #000;
+    text-shadow: 0 -1px rgba(255, 255, 255, 0.3);
+}
+
+.km-android .view-content h1
+{
+    color: #8a8b8f;
+}
+
+.km-android .view-content p,
+.km-android .view-content h3
+{
+    color: #2e5968;
+}
+
+.km-android .weather-info.temperature.low
+{
+    color: #2e5968;
+}
+
+.km-ios .km-view .weather
+{
+    background: #5fb4ed; /* Old browsers */
+    background: -moz-linear-gradient(top, #5fb4ed 0%, #0076c5 74%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5fb4ed), color-stop(74%, #0076c5)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #5fb4ed 0%, #0076c5 74%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #5fb4ed 0%, #0076c5 74%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #5fb4ed 0%, #0076c5 74%); /* IE10+ */
+    background: linear-gradient(to bottom, #5fb4ed 0%, #0076c5 74%); /* W3C */
+}
+.km-ios7 .km-view .weather,
+.km-flat .km-view .weather
+{
+    background: #b0b0b0;
+}
+
+.km-flat .km-list > li
+{
+    box-shadow: none;
+}
+
+.km-ios .km-list > li,
+.km-flat .km-list > li
+{
+    background: none;
+}
+
+/* Separator Style*/
+.separator > .dark
+{
+    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(30%, rgba(0, 0, 0, 0.2)), color-stop(50%, rgba(0, 0, 0, 0.2)), color-stop(70%, rgba(0, 0, 0, 0.2)), color-stop(100%, rgba(0, 0, 0, 0)));
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0) 100%);
+    background: -o-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0) 100%);
+    background: -ms-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0) 100%);
+    height: 1px;
+    border: none;
+    width: 100%;
+    opacity: 0.3;
+}
+
+.separator > .light
+{
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(255, 255, 255, 0)));
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    height: 1px;
+    border: none;
+    width: 100%;
+    opacity: 0.3;
+}
+
+/* RETINA DISPLAY STYLES*/
+@media only screen and (-webkit-min-device-pixel-ratio: 2) , (min-resolution: 192dpi)
+{
+    .img
+    {
+        background-image: url(../styles/images/appbuilder2x.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    .logo
+    {
+        background-image: url(../styles/images/logo2x.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    #map-search
+    {
+        background-image: url(../styles/images/search2x.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    #map-search:active
+    {
+        background-image: url(../styles/images/search_active2x.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    #map-navigate-home
+    {
+        background-image: url(../styles/images/location2x.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    #map-navigate-home:active
+    {
+        background-image: url(../styles/images/location_active2x.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    .weather-icon
+    {
+        background-image: url(../styles/images/sprite-weather2x.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+}
+
+.consumptionLegend
+{
+    padding-right: 10px;
+}
+
+.legendName
+{
+    padding: 0 5px;
+    margin: 0;
+}
+
+.tooltipLocationChanged .k-tooltip
+{
+    /* margin-left: -5px;*/
+    margin-top: -30px;
+}
+.valueDifference { font-size: 20px !important; vertical-align: top; padding: 0 5px !important}
+
+.header { font-size: 18px; font-weight: bold; }
+
+.spacer
+{
+    border-right: 1px solid #cfcfcf;
+}
+
+.sparklineBox
+{
+    margin: 15px;
+    border-bottom: 2px #cfcfcf solid;
+    border-right: 2px #cfcfcf solid;
+    border-left: 1px #cfcfcf solid;
+    border-top: 1px #cfcfcf solid;
+    border-radius: 5px;
+}
+
+.AvgValue
+{
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.verticalAlignMiddle
+{
+    vertical-align: middle;
+}
+
+.listTemplateStyle
+{
+    display: inline-block;
+}
+
+.drawer
+{
+    width: 270px;
+}
+
+.capitalize
+{
+    text-align: left; font-size: 18px; font-weight: bold; padding: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px;
+    background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(255, 255, 255, 1)), color-stop(1, rgba(234, 239, 244, 1)));
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0, rgba(234, 239, 244, 1));
+    background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0, rgba(234, 239, 244, 1));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0, rgba(234, 239, 244, 1));
+    background-image: linear-gradient(top, rgba(255, 255, 255, 1) 0, rgba(234, 239, 244, 1))
+}
+
+.padding10px
+{
+    padding: 10px;
+}
+
+.sparkline
+{
+    font-weight: bold;
+}
+
+.lowest
+{
+    height: 19px;
+    width: 19px;
+    background: url(../images/lowest.png) 0px 0px no-repeat;
+}
+
+.highest
+{
+    height: 19px;
+    width: 19px;
+    margin-left: 5px;
+    background: url(../images/highest.png) 0px 0px no-repeat;
+}
+
+#avgDailyCostChart
+{
+    width: 350px;
+    height: 250px;
+    margin: 0 auto 0;
+}
+
+#gauge
+{
+    width: 220px;
+    height: 130px;
+    margin: 0 auto 0;
+}
+
+.km-drawer-button:before, .km-drawer-button:after { content: "\E077"; }
+
+.phoney
+{
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgb(192, 192, 192)), color-stop(100, rgb(255, 255, 255)));
+    background: -moz-linear-gradient(center top, rgb(192, 192, 192) 0%, rgb(255, 255, 255) 100%);
+}
+
+.phoneytext
+{
+	
+    color: #000;
+    font-family: Helvetica Neue, Helvetica, arial;
+    font-size: 12px;
+    line-height: 25px;
+    padding: 4px 15px 4px 30px;
+    font-weight: bold;
+    background: url(../images/ic.png) 0px 50% no-repeat;
+}
+
+.SlideShowHeaderText
+{
+    font-size: 50px;
+    text-align: center;
+    color: White;
+    font-weight: bold;
+    z-index: 1000;
+    text-shadow: 1px 1px 1px black;
+}
+
+.SlideShowDescriptionText
+{
+    font-size: 40px;
+    text-align: center;
+    color: White;
+    font-style: italic;
+    z-index: 1000;
+    text-shadow: 1px 1px 1px black;
+}
+
+#wrap
+{
+    position: relative;
+}
+				
+#book
+{
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+}
+				
+#book > li
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+
 .splashBackground
 {
-	background: url(../images/BG.jpg) center center no-repeat;
-	position: relative;
+    background: url(../images/BG.jpg) center center no-repeat;
+    position: relative;
 }
 .splashBackground .km-content, #slideShow .km-content
 {
-	background: none !important;
+    background: none !important;
 }
 
+.BottomLogo
+{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1000;
+}
+
+.CILink
+{
+    position: absolute;
+    /*top: 48%;*/
+    right: 0px;
+    opacity: 1.0;
+    z-index: 1000;
+}
+
+.emailTextbox input[type=text], .emailTextbox input[type=email]
+{
+    font: normal 13px Arial !important; color: #666;
+    /*border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid #a3a9b0;*/
+    border: none;
+    padding: 2px; margin: 0; width: 400px; height: 15px;
+}
+
+#emailbody, #emailsignature
+{
+    -webkit-user-select: auto;
+}
+
+.emailTextbox ul li
+{
+    border-bottom: 1px solid #d6d6d6;
+    padding: 10px 5px 10px 15px;
+}
+
+.emailTextbox label
+{
+    font-weight: 700;
+    color: #8f8f8f;
+}
+
+.emailTextbox ul
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+.innerchart
+{ 
+    height: 432px;
+    text-align: center;
+    width: 50%;
+    border: 0px; 
+}
+.innerchartdiv
+{
+    margin: 10px;
+    height: 400px;
+    padding: 5px;
+    background: white !important;
+    border: 1px solid #b5b5b5;
+    border-radius: 15px;
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden; 
+}
+
+.emptyDataTemplateStyle
+{
+    color: LightGray;
+    opacity: 0.5;
+    margin-top: 25%;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.YCemptyDataTemplateStyle
+{
+    color: Black;
+    opacity: 0.5;
+    margin-top: 25%;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.zindex
+{
+    z-index: 999;
+}
+
+.divmainchart
+{
+    padding: 10px;
+    background: #ececec;
+}
+
+.pagewidthPortrait
+{
+    width: 768px !important;
+    height: 930px !important;
+}
+
+.pagewidthLandscape
+{
+    width: 1024px !important;
+    height: 674px !important;
+}
+
+.messagebox-icon
+{
+    padding-right: 10px;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+}
+
+.messagebox-button
+{
+    margin: 0px 5px 5px 0px !important;
+    padding: 0px 20px 0px 20px !important;
+    display: none;
+    float: right;
+}
+
+.about_box
+{
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(255, 255, 255, 100)), color-stop(1, rgba(198, 228, 247, 100))) !important;
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 100), rgba(198, 228, 247, 100)) !important;
+    background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 100), rgba(198, 228, 247, 100)) !important;
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 100), rgba(198, 228, 247, 100)) !important;
+    background-image: linear-gradient(top, rgba(255, 255, 255, 100), rgba(198, 228, 247, 100)) !important;
+    background-color: #c5e3f6 !important;
+    margin: auto;
+}
+.box
+{
+    background: #FFFFFF; margin: 0 auto; width: 530px; font: normal 14px Calibri, Arial, Helvetica, sans-serif; color: #999999; padding: 25px;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid #c5d7e2;
+    box-shadow: 3px 3px 3px #afc5d2;
+}
+.version { font-size: 28px; color: #333333; font-weight: bold; padding: 0 0 0 18px; }
+.box p { font: normal 14px Calibri, Arial, Helvetica, sans-serif; padding: 0; margin: 0; font-weight: normal; }
+.copy { color: #333; padding-left: 10px; font-size: 13px; }
+
+.modulelist
+{
+    width: 43%;
+    float: left;
+    padding: 2%;
+    margin: 2% 1% 2% 2%;
+    border: 1px solid black;
+    border-radius: 15px;
+    background: white;
+    float: left;
+}
+
+.graphlist
+{
+    width: 43%;
+    float: left;
+    padding: 2%;
+    margin: 2% 2% 2% 1%;
+    border: 1px solid black;
+    border-radius: 15px;
+    background: white;
+    float: left;
+}
+
+.graph-list
+{
+    width: 22%;
+    float: left;
+    padding: 0;
+}
+
+#graph_list
+{
+    border-right: 1px solid gray; 
+}
+
+.chart-area
+{
+    width: 75%;
+    float: right;
+    padding: 0;
+}
+
+.registrationNote
+{
+    padding: 13px !important;
+    margin-top: 0px !important;
+    font-weight: bold !important;
+    color: White;
+}
+
+.footerimg
+{
+    width: 100%;
+}
+
+.loginBackground
+{
+    background: url(../images/bg_v1.jpg);
+    background-size: 100% 100%;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
+}
+
+.mainBackgroundWithFooter
+{
+    background: url(../images/bg_v2.jpg);
+    background-size: 100% 100%;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
+}
+
+.mainBackground
+{
+    background: url(../images/login-bg.jpg);
+    background-size: 100% 100%;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
+}
+
+.mainBackground .km-content, .mainBackgroundWithFooter .km-content, .loginBackground .km-content 
+{
+    background: none !important;
+}
+.mainBackground .km-footer, .mainBackgroundWithFooter .km-content, .loginBackground .km-content 
+{
+    background: none;
+}
+
+[data-role="layout"]
+{
+    display: none
+}
+
+.secondbtn { display: inline-block !important; float: left; }
+.mylist_img { float: left; margin-right: 10px; height: 48px; }
+.mylist h3 { margin: 0px 20px 0 0; padding: 0; padding-right: 20px; height: 48px; display: table-cell; line-height: 100%; vertical-align: middle; font-size: 0.8em; text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5); text-overflow: ellipsis }
+.mylist a { overflow: hidden !important; }
+.mylist li { padding: 0px !important; }
+.login { background: url(../images/loginbg.png) no-repeat; margin: 0 auto; width: 387px; height: 115px; padding: 40px 0 0 0; color: #FFF; }
+.login table { border-spacing: 13px; }
+.logo { width: 312px; margin: 0 auto; }
+.login .btn { float: left; }
+.login .fg_link { float: right; padding: 5px 0 0 0; }
+.login .fg_link a { text-decoration: none; font-size: 12px; color: #333; border: none !important; background: none !important; padding: 0px !important; margin: 0px !important; }
+.login .fg_link a:active { text-decoration: none; color: #073876  !important; border: none !important; background: none !important; padding: 0px !important; margin: 0px !important; }
+.login .fg_link a:hover { text-decoration: underline; }
+.inputbtn
+{
+    float: left;
+    border: 1px solid #828587 !important; ; background: #c1c2c4 url(../kendo/styles/images/butbg.png) top repeat-x !important;
+    cursor: pointer !important; height: 30px !important; overflow: visible !important;
+    font: bold 13px Arial, Helvetica, sans-serif !important; margin: 0 !important; padding: 0 20px 0px 20px !important;
+    line-height: 28px !important; color: #FFF !important;
+    border-radius: 6px !important;
+    -moz-border-radius: 6px !important;
+    -webkit-border-radius: 6px !important;
+}
+
+.km-tablet .km-ios .inputbtn:active, .km-ios .inputbtn:active, .inputbtn:active
+{
+    border: 1px solid #de8f32  !important; ; background: url(../kendo/styles/images/login_hoverbg.png) top repeat-x !important; color: white !important;
+}
+
+.login input[type=text]
+{
+    font: normal 13px Arial; color: #666;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid #a3a9b0;
+    padding: 5px; margin: 0; width: 272px;
+}
+
+.services_list { margin: 0 auto; padding: 30px 0 0 0; }
+.services_list ul { margin: 0px auto !important; padding: 0; list-style: none; }
+.services_list ul li { margin: 0; padding: 0; list-style-type: none; float: left; display: block; width: 230px; height: 250px; margin: 0 10px; text-align: center; }
+.services_list ul li img { display: inline-block !important; padding: 0 !important; margin: 0 !important; width: 141px; height: 170px; }
+.services_list ul li a { color: #2c4564 !important; font-size: 20px !important; line-height: 115% !important; font-weight: bold !important; text-decoration: none !important; }
+.services_list ul li a { color: White !important; font-size: 20px !important; line-height: 115% !important; font-weight: bold !important; text-decoration: none !important; }
+.services_list ul li a:active { color: #648c9d !important; }
+        
+/*.km-ios .services_list { margin: 0 auto; padding: 20px 0 0 0; }
+.km-ios .services_list ul li { margin: 0; padding: 0; list-style-type: none; float: left; display: block; width: 100px; height: 110px; margin: 0 3px; text-align: center; }
+.km-ios .services_list ul li img { display: inline-block !important; padding: 0 !important; margin: 0 !important; width: 63px; height: 77px; }
+.km-ios .services_list ul li a { color: #2c4564 !important; font-size: 10px !important; line-height: 115% !important; font-weight: bold !important; text-decoration: none !important; }
+.km-ios .services_list ul li a:active { color: #f45a1d !important; }
+
+.services_list { margin: 0px auto !important; padding: 30px 0 0 0; }
+.services_list ul { margin: 0px auto !important; padding: 0; list-style: none; }
+.services_list ul li { margin: 0; padding: 0; list-style-type: none; float: left; display: block; width: 230px; height: 250px; margin: 0 10px; text-align: center; }
+.services_list ul li img { display: inline-block !important; padding: 0 !important; margin: 0 !important; }
+.services_list ul li a { color: #2c4564 !important; font-size: 20px !important; line-height: 115% !important; font-weight: bold !important; text-decoration: none !important; }
+.services_list ul li a:active { color: #f45a1d !important; }
+.services_list ul li .km-button { margin: 0 !important; padding: 0 !important; border: none !important; background: none !important; }*/
+
+.mainbg { background: #f1f1f1; }
+.blog_box
+{
+    background: #FFF !important; margin: 15px; border: 1px solid #d6d6d6;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+.blog_box h1
+{
+    margin: 0; padding: 8px 10px; font-size: 12px; color: #2d2f32;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(241, 241, 241, 100)), color-stop(1, rgba(182, 182, 182, 100)));
+    background-image: -moz-linear-gradient(top, rgba(241, 241, 241, 100), rgba(182, 182, 182, 100));
+    background-image: -ms-linear-gradient(top, rgba(241, 241, 241, 100), rgba(182, 182, 182, 100));
+    background-image: -o-linear-gradient(top, rgba(241, 241, 241, 100), rgba(182, 182, 182, 100));
+    background-image: linear-gradient(top, rgba(241, 241, 241, 100), rgba(182, 182, 182, 100));
+    background-color: #cfcfcf;
+    border-radius: 6px 6px 0px 0px;
+    -moz-border-radius: 6px 6px 0px 0px;
+    -webkit-border-radius: 6px 6px 0px 0px;
+}
+
+.con_area { padding: 15px; font-weight: normal; color: #333; }
+.con_area h3 { color: #1e4072; font-size: 18px; padding: 0 0 10px 0; margin: 0; }
+.con_area h3 span { font-weight: normal; font-size: 16px; }
+.con_area p { padding: 0 0 25px 0; margin: 0; }
+
+/******************** Icon Style **************************/
+/*.km-tabstrip .km-button{ border-left:1px solid #afafaf !important;}*/
+
+
+.km-ic1:after, .km-ic1:before
+{
+    content: "";
+    background: url(../kendo/styles/images/ic1.png) no-repeat !important;
+    margin: 0 !important; padding: 0 !important; 
+}
+.km-state-active .km-ic1:after, .km-state-active .km-ic1:before
+{
+    content: "";
+    background: url(../kendo/styles/images/ic1_h.png) no-repeat !important;
+    margin: 0 !important; padding: 0 !important;
+}
+
+.km-ic2:after, .km-ic2:before
+{
+    content: "";
+    background: url(../kendo/styles/images/ic2.png) no-repeat !important;
+    margin: 0 !important; padding: 0 !important; 
+}
+.km-state-active .km-ic2:after, .km-state-active .km-ic2:before
+{
+    content: "";
+    background: url(../kendo/styles/images/ic2_h.png) no-repeat !important;
+    margin: 0 !important; padding: 0 !important;
+}
+
+.km-ic3:after, .km-ic3:before
+{
+    content: "";
+    background: url(../kendo/styles/images/ic3.png) no-repeat !important;
+    margin: 0 !important; padding: 0 !important; width: 40px !important; 
+}
+.km-state-active .km-ic3:after, .km-state-active .km-ic3:before
+{
+    content: "";
+    background: url(../kendo/styles/images/ic3_h.png) no-repeat !important;
+    margin: 0 !important; padding: 0 !important; width: 40px !important;
+}
+
+.km-ic4:after, .km-ic4:before
+{
+    content: "";
+    background: url(../kendo/styles/images/ic4.png) no-repeat !important;
+    margin: 0 !important; padding: 0 !important; width: 40px !important; 
+}
+.km-state-active .km-ic4:after, .km-state-active .km-ic4:before
+{
+    content: "";
+    background: url(../kendo/styles/images/ic4_h.png) no-repeat !important;
+    margin: 0 !important; padding: 0 !important; width: 40px !important;
+}
+
+.km-ic6:after, .km-ic6:before
+{
+    content: "";
+    background: url(../kendo/styles/images/ic6.png) no-repeat !important;
+    margin: 0 !important; padding: 0 !important; width: 40px !important; 
+}
+.km-state-active .km-ic6:after, .km-state-active .km-ic6:before
+{
+    content: "";
+    background: url(../kendo/styles/images/ic6_h.png) no-repeat !important;
+    margin: 0 !important; padding: 0 !important; width: 40px !important;
+}
+
+.km-hc:after, .km-hc:before
+{
+    content: "";
+    background: url(../kendo/styles/images/hc.png) no-repeat !important;
+    margin: 0 !important; padding: 0 !important; width: 40px !important; 
+}
+.km-state-active .km-hc:after, .km-state-active .km-hc:before
+{
+    content: "";
+    background: url(../kendo/styles/images/hc_h.png) no-repeat !important;
+    margin: 0 !important; padding: 0 !important; width: 40px !important;
+}
+
+/*** style for textbox **/
+.km-tablet .km-ios .textboxStyle input[type=text], .km-tablet .textboxStyle input[type=password], .km-tablet .km-android .textboxStyle input[type=text], .km-tablet .textboxStyle input[type=password]
+{
+    font: normal 13px Arial; color: #666;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid #a3a9b0;
+    padding: 5px; margin: 0; width: 272px;
+}
+
+.textboxStyle input[type=text], .textboxStyle input[type=password]
+{
+    font: normal 10px Arial !important; color: #666;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid #a3a9b0;
+    padding: 2px; margin: 0; width: 165px; height: 15px;
+}
+
+.km-tablet .km-ios .textboxStyle input[type=text], .km-tablet .km-ios .textboxStyle input[type=password], .km-tablet .textboxStyle input[type=text], .km-tablet .textboxStyle input[type=password]
+{
+    font-size: 1.2em !important;
+    height: 21px !important;
+}
+
+.textboxStyle
+{
+    text-align: center; margin: 0px auto; margin-top: 15px;
+}
+
+.textboxStyle h3
+{
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+
+.km-tablet .km-ios .textboxStyle h3
+{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.scatterbg .km-content 
+{
+    background-image: url(../images/registrationBackground.png) !important;
+    background-size: 641px 311px;
+}
+
+.km-tablet .km-ios .scatterbg .km-content 
+{
+    background-image: url(../images/registrationBackground.png) !important;
+    background-size: 100% 100%;
+    background-repeat: repeat;
+}
+
+.km-ios .scatterbg .km-content 
+{
+    background-image: url(../images/registrationBackground.png) !important;
+    background-size: 50% 50%;
+}
+
+.popupContent
+{
+    padding: 0px;
+    background: white !important;
+}
+
+.popupContent .km-content
+{
+    background: white !important;
+}
+
+/**custom style for pages**/
+.lblStyle
+{
+    font-weight: bold;
+    text-align: right;
+    color: White;
+}
+
+.linkStyle
+{
+    border: none; background: none; padding: 0px; margin: 0px;
+}
+
+.aboutUsStyle
+{
+    text-align: center; margin: 20px;
+}
+
+.form
+{
+    margin: 0px auto;
+}
+
+.form td
+{
+    text-align: right;
+}
+
+.form .button
+{
+    text-align: left;
+}
+
+.registrationresult
+{
+    text-align: left;
+    padding: 10px; 
+}
+
+.response
+{
+    font-weight: bold;
+    text-align: left;
+    padding: 10px; 
+    color: White;
+}
+
+.chartArea .km-content
+{
+    background-color: White !important;
+}
+
+/******************** Left Navigation *************************/
+/*.leftnav { width: 190px; background: #f9f9f9; border-right: 1px solid #d6d6d6; float: left; min-height: 400px; }*/
+.leftnav ul { list-style: none; padding: 0; margin: 0; }
+.leftnav ul li
+{
+    list-style-type: none; padding: 7px 8px; margin: 0; border-bottom: 1px solid #d6d6d6; display: list-item !important;
+    /*background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(255, 255, 255, 100)), color-stop(1, rgba(226, 226, 226, 100)));
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 100), rgba(226, 226, 226, 100));
+    background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 100), rgba(226, 226, 226, 100));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 100), rgba(226, 226, 226, 100));
+    background-image: linear-gradient(top, rgba(255, 255, 255, 100), rgba(226, 226, 226, 100));
+    background-color: #e2e2e2;*/
+}
+.leftnav ul li a
+{
+    font: bold 1.0em Arial, Helvetica, sans-serif; text-decoration: none; color: #393939; display: block;
+    /* background: url(../kendo/styles/images/ar_right.png) right center no-repeat; padding-right: 15px; */
+}
+
+/*.leftnav ul li:active, .leftnav ul li.active
+{ 
+background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(113, 146, 186, 100)), color-stop(1, rgba(83, 116, 157, 100)));
+background-image: -moz-linear-gradient(top, rgba(113, 146, 186, 100), rgba(83, 116, 157, 100));
+background-image: -ms-linear-gradient(top, rgba(113, 146, 186, 100), rgba(83, 116, 157, 100));
+background-image: -o-linear-gradient(top, rgba(113, 146, 186, 100), rgba(83, 116, 157, 100));
+background-image: linear-gradient(top, rgba(255, 255, 255, 100), rgba(83, 116, 157, 100));
+background-color: #53749d;
+cursor: pointer;
+}
+.leftnav ul li:active a, .leftnav ul li.active a
+{
+color: #FFF;
+/*background: url(../kendo/styles/images/ar_right_h.png) right center no-repeat; }*/
+
+/******************** Dashboard of human capital *************************/
+.sub_box
+{
+    padding: 13px 10px; margin: 0px; text-align: center; color: #545454; font: bold 16px  Calibri, Arial, Helvetica, sans-serif; text-transform: uppercase;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(255, 255, 255, 100)), color-stop(1, rgba(241, 241, 241, 100)));
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 100), rgba(241, 241, 241, 100));
+    background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 100), rgba(241, 241, 241, 100));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 100), rgba(241, 241, 241, 100));
+    background-image: linear-gradient(top, rgba(255, 255, 255, 100), rgba(241, 241, 241, 100));
+    background-color: #f1f1f1;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid #e8e8e8;
+}
+.sub_box span { font-size: 34px; display: inline-block; padding-top: 5px; }
+.sub_box span.green { color: #66a934; }
+.sub_box span.blue { color: #4b9fd1; }
+.sub_box span.red { color: #d46e4a; }
+.sub_box span.big_blue { color: #1c638d; }
+
+.CateringSpan { text-align: center; font-weight: bold; }
+
+.CateringSpan span { display: inline-block; }
+.CateringSpan .green { color: #66a934; font-size: 20px; vertical-align: top; padding: 0 5px }
+.CateringSpan .blue { color: #4b9fd1; font-size: 40px; padding-top: 5px; }
+.CateringSpan .red { color: #d46e4a; font-size: 20px; vertical-align: top; padding: 0 5px }
+.CateringSpan .big_blue { color: #1c638d; font-size: 40px; padding-top: 5px; }
+.CateringSpan .big_blueSmall { color: #1c638d; font-size: 20px; padding-top: 5px; }
+
+.dashboardlist ul { list-style: none; padding: 0; margin: 0; }
+.dashboardlist ul li
+{
+    padding: 7px;
+}
+.dashboardlist ul li a
+{
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    list-style-type: none; padding: 8px 16px; margin: 0; border-bottom: 1px solid #d6d6d6;
+    
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(183, 183, 183, 100)), color-stop(1, rgba(136, 136, 136, 100)));
+    background-image: -moz-linear-gradient(top, rgba(183, 183, 183, 100), rgba(136, 136, 136, 100));
+    background-image: -ms-linear-gradient(top, rgba(183, 183, 183, 100), rgba(136, 136, 136, 100));
+    background-image: -o-linear-gradient(top, rgba(183, 183, 183, 100), rgba(136, 136, 136, 100));
+    background-image: linear-gradient(top, rgba(183, 183, 183, 100), rgba(136, 136, 136, 100));
+    font: bold 0.9em Arial, Helvetica, sans-serif; text-decoration: none; color: #FFFFFF; display: block;
+}
+/*.dashboardlist ul li a { font: bold 0.9em Arial, Helvetica, sans-serif; text-decoration: none; color: #FFFFFF; display: block; padding: 0px 8px; }*/
+
+.dashboardlist ul li.active a
+{ 
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(65, 98, 140, 100)), color-stop(1, rgba(65, 98, 140, 100)));
+    background-image: -moz-linear-gradient(top, rgba(65, 98, 140, 100), rgba(65, 98, 140, 100));
+    background-image: -ms-linear-gradient(top, rgba(65, 98, 140, 100), rgba(65, 98, 140, 100));
+    background-image: -o-linear-gradient(top, rgba(65, 98, 140, 100), rgba(65, 98, 140, 100));
+    background-image: linear-gradient(top, rgba(65, 98, 140, 100), rgba(65, 98, 140, 100));
+    background-color: #2b4361;
+    cursor: pointer;
+    color: #FFF;
+}
+/*.dashboardlist ul li.active a { color: #FFF; }*/
+
+.divscrollerview
+{
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(242, 242, 242, 100)), color-stop(1, rgba(220, 220, 220, 100)));
+    background-image: -moz-linear-gradient(top, rgba(242, 242, 242, 100), rgba(220, 220, 220, 100));
+    background-image: -ms-linear-gradient(top, rgba(242, 242, 242, 100), rgba(220, 220, 220, 100));
+    background-image: -o-linear-gradient(top, rgba(242, 242, 242, 100), rgba(220, 220, 220, 100));
+    background-image: linear-gradient(top, rgba(242, 242, 242, 100), rgba(220, 220, 220, 100));
+    background-color: #2b4361;
+}
+
+.divbackground .km-content
+{
+    background: #ffffff !important;
+    /*background:#d7d9df none*/
+}
+/******************** Dashboard of human capital Ends here*************************/
+
+.graph-list .km-listview li
+{
+    padding: 10px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+#home .km-content .km-button
+{
+    padding: 0px;
+    border: none !important;
+    background: none !important;
+}
+
+.km-list input[type=button], .km-list button, .km-android .km-list button
+{
+    border: none !important;
+    width: 100%;
+    text-align: left;
+    background: inherit;
+    color: White;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: .5em .7em;
+    margin: 0px;
+    border-radius: inherit;
+}
+.km-list input[type=button]:active, .km-list button:active, .km-android .km-list button:active
+{
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(255, 255, 255, 100)), color-stop(1, rgba(114, 147, 186, 100))) !important;
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 100), rgba(114, 147, 186, 100)) !important;
+    background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 100), rgba(114, 147, 186, 100)) !important;
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 100), rgba(114, 147, 186, 100)) !important;
+    background-image: linear-gradient(top, rgba(255, 255, 255, 100), rgba(114, 147, 186, 100)) !important;
+    color: #26313e;
+    border: .1px solid white !important;
+    border-radius: 2px 2px 0px 4px;
+    /*background-color: #d68421 !important;*/
+}
+::-webkit-input-placeholder
+{
+    color: LightGray;
+}
+
+.km-tablet .km-ios .logo img, .km-tablet .km-android .logo img
+{
+    width: 100%;
+    margin: 18% 0% 0% 36%;
+}
+
+.km-ios .logo img
+{
+    width: 55%;
+    margin: 10% 0% 0% 30%;
+}
+
+/*.km-tablet .km-android .logo img
+{
+width: 70%;
+margin: 18% 0% 0% 36%;
+}
+
+.km-android .logo img
+{
+width: 40%;
+margin: 18% 0% 0% 36%;
+}*/
+
+.km-tablet .km-ios .textboxStyle .logo img
+{
+    width: 100%;
+    margin: 0px auto;
+}
+
+.km-ios .textboxStyle .logo img
+{
+    width: 55%;
+    margin: 0px auto;
+}
+
+.km-tablet .km-android .textboxStyle .logo img
+{
+    /*width: 70%;*/
+    margin: 0px auto;
+}
+
+.km-android .textboxStyle .logo img
+{
+    width: 40%;
+    margin: 0px auto;
+}
+
+.km-tablet .km-ios .login
+{
+    background-size: 100%;
+    width: 387px;
+    font-size: 100%;
+    margin: 2% 0% 0% 41%;
+    padding: 40px 0 0 0;
+}
+.km-tablet .km-ios .login table, .login table { border-spacing: 13px; }
+.km-tablet .km-ios .pinWidth, .pinWidth { width: 50px; }
+
+.km-tablet .km-ios .mylist_img { float: left; height: 87px; width: 248px; margin-right: 20px; }
+.km-tablet .km-ios .mylist h3 { margin: 31px 40px 0 0; padding: 17px 0 0 0; font-size: 20px; text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5); }
+
+.km-tablet .km-ios .login input[type=text], .km-tablet .km-ios .login input[type=password], .km-tablet .km-android .login input[type=text], .km-tablet .km-android .login input[type=password]
+{
+    font: normal 13px Arial; color: #666;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid #a3a9b0;
+    padding: 5px; margin: 0; width: 272px;
+}
+
+.km-tablet .km-ios .inputbtn, .inputbtn
+{
+    background: #c1c2c4 url(../kendo/styles/images/butbg.png) top repeat-x !important;
+    cursor: pointer !important; height: 30px !important; overflow: visible !important;
+    font: bold 13px Arial, Helvetica, sans-serif !important; margin: 0 !important; padding: 0 20px 0px 20px !important;
+    line-height: 28px !important; color: #FFF !important;
+    border-radius: 6px !important;
+    -moz-border-radius: 6px !important;
+    -webkit-border-radius: 6px !important;
+}
+
+.km-tablet .km-ios .login .fg_link, .login .fg_link { float: right; padding: 5px 0 0 0; }
+.km-tablet .km-ios .login .fg_link a, .login .fg_link a { text-decoration: none; font-size: 12px; color: #333; }
+.km-tablet .km-ios .login .fg_link a:hover, .login .fg_link a:hover { text-decoration: underline; }
+
+.km-ios .inputbtn
+{
+    background: #c1c2c4 url(../kendo/styles/images/butbg.png) top repeat-x !important;
+    cursor: pointer !important; height: 20px !important; overflow: visible !important;
+    font: bold 10px Arial, Helvetica, sans-serif !important; margin: 0 !important; padding: 0 15px 0px 15px !important;
+    line-height: 18px !important; color: #FFF !important;
+    border-radius: 6px !important;
+    -moz-border-radius: 6px !important;
+    -webkit-border-radius: 6px !important;
+}
+
+.km-ios .login
+{
+    background-size: 233px; 
+    font-size: 70%;
+    margin: 2% 0% 0% 20%;
+    padding: 25px 0 0 0;
+}
+
+.km-ios .login table { border-spacing: 6px; }
+.km-ios .pinWidth { width: 35px; }
+
+.km-ios .login input[type=text], .km-ios .login input[type=password]
+{
+    font: normal 8px Arial; color: #666;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid #a3a9b0;
+    padding: 2px; margin: 0; width: 165px;
+}
+
+.km-ios .login .fg_link { float: right; padding: 4px 0 0 0; }
+.km-ios .login .fg_link a { text-decoration: none; font-size: 9px; color: #333; }
+.km-ios .login .fg_link a:hover { text-decoration: underline; }
+
+/*.km-tablet .km-android .login
+{
+background-size: 80%;
+font-size: 80%;
+margin: 2% 0% 0% 41%;
+padding: 32px 0 0 0;
+}
+.km-tablet .km-android .login table { border-spacing: 10px; }
+.km-tablet .km-android .pinWidth { width: 40px; }
+
+.km-tablet .km-android .login input[type=text]
+{
+font: normal 10px Arial; color: #666;
+border-radius: 6px;
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+border: 1px solid #a3a9b0;
+padding: 5px; margin: 0; width: 215px;
+}
+
+.km-tablet .km-android .inputbtn
+{
+border: none !important; background: #c1c2c4 url(../kendo/styles/images/butbg.png) top repeat-x !important;
+cursor: pointer !important; height: 24px !important; overflow: visible !important;
+font: bold 10px Arial, Helvetica, sans-serif !important; margin: 0 !important; padding: 0 20px 0px 20px !important;
+line-height: 22px !important; color: #FFF !important;
+border-radius: 6px !important;
+-moz-border-radius: 6px !important;
+-webkit-border-radius: 6px !important;
+}
+
+.km-tablet .km-android .login .fg_link { float: right; padding: 4px 0 0 0; }
+.km-tablet .km-android .login .fg_link a { text-decoration: none; font-size: 9px; color: #333; }
+.km-tablet .km-android .login .fg_link a:hover { text-decoration: underline; }
+
+.km-android .inputbtn
+{
+border: none !important; background: #c1c2c4 url(../kendo/styles/images/butbg.png) top repeat-x !important;
+cursor: pointer !important; height: 20px !important; overflow: visible !important;
+font: bold 10px Arial, Helvetica, sans-serif !important; margin: 0 !important; padding: 0 15px 0px 15px !important;
+line-height: 18px !important; color: #FFF !important;
+border-radius: 6px !important;
+-moz-border-radius: 6px !important;
+-webkit-border-radius: 6px !important;
+}
+
+.km-android .login
+{
+background-size: 60%;
+font-size: 70%;
+margin: 2% 0% 0% 20%;
+padding: 25px 0 0 0;
+}
+
+.km-android .login table { border-spacing: 6px; }
+.km-android .pinWidth { width: 35px; }
+
+.km-android .login input[type=text]
+{
+font: normal 8px Arial; color: #666;
+border-radius: 6px;
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+border: 1px solid #a3a9b0;
+padding: 2px; margin: 0; width: 165px;
+}
+
+.km-android .login .fg_link { float: right; padding: 4px 0 0 0; }
+.km-android .login .fg_link a { text-decoration: none; font-size: 9px; color: #333; }
+.km-android .login .fg_link a:hover { text-decoration: underline; }
+*/
+.km-tablet .km-ios .servicesListFirst
+{
+    float: left; height: 200; width: 200; border: none !important; background: none !important; padding: 0px; margin: 60px 35px 20px 70px;
+}
+
+.km-tablet .km-ios .servicesList
+{
+    float: left; height: 200; width: 200; border: none; background: none; padding: 0px; margin: 60px 35px 20px 35px;
+}
+ 
+.km-ios .servicesList, .km-ios .servicesListFirst
+{
+    float: left; height: 200; width: 200; border: none !important; background: none !important; padding: 0px; margin: 20px 35px 0px 70px;
+}
+
+.km-tablet .km-android .login background-image
+{
+    width: 70%;
+    margin: 9% 0% 0% 50%;
+}
+
+.km-android .login background-image
+{
+    width: 40%;
+    margin: 9% 0% 0% 50%;
+}
+
+.km-ios #popover .km-view-title,
+.km-ios #popover-people .km-view-title
+{
+    color: #fff;
+    text-shadow: 0 -1px rgba(0, 0, 0, .5);
+}
+
+.km-ios #popover .km-navbar,
+.km-root > * > #popover > .km-content
+{
+    background: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(255, 255, 255, 0.35)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(0.5, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0))) #000;
+}
+
+/********************Chart region*************************/
+
+.chart-wrapper
+{
+    position: relative;
+    /* background: url("../images/chart-wrapper.png") no-repeat scroll 0 0 transparent; */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(242, 242, 242, 100)), color-stop(1, rgba(219, 219, 219, 100)));
+    background-image: -moz-linear-gradient(top, rgba(242, 242, 242, 100), rgba(219, 219, 219, 100));
+    background-image: -ms-linear-gradient(top, rgba(242, 242, 242, 100), rgba(219, 219, 219, 100));
+    background-image: -o-linear-gradient(top, rgba(242, 242, 242, 100), rgba(219, 219, 219, 100));
+    background-image: linear-gradient(top, rgba(242, 242, 242, 100), rgba(219, 219, 219, 100));
+    
+    border: 1px solid #cccccc;
+    border-radius: 7px 7px 7px 7px;
+    -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+	
+    padding: 20px 20px 30px 20px;
+}
+
+.grid-wrapper
+{
+    position: relative;
+    /* background: url("../images/chart-wrapper.png") no-repeat scroll 0 0 transparent; */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(242, 242, 242, 100)), color-stop(1, rgba(219, 219, 219, 100)));
+    background-image: -moz-linear-gradient(top, rgba(242, 242, 242, 100), rgba(219, 219, 219, 100));
+    background-image: -ms-linear-gradient(top, rgba(242, 242, 242, 100), rgba(219, 219, 219, 100));
+    background-image: -o-linear-gradient(top, rgba(242, 242, 242, 100), rgba(219, 219, 219, 100));
+    background-image: linear-gradient(top, rgba(242, 242, 242, 100), rgba(219, 219, 219, 100));
+    
+    border: 1px solid #cccccc;
+    border-radius: 7px 7px 7px 7px;
+    -moz-border-radius: 7px 7px 7px 7px; 
+    -webkit-border-radius: 7px 7px 7px 7px;
+	
+    padding: 20px 20px 30px 20px;
+}
+
+.grid-wrapper .k-grid
+{
+    border: 2px solid #c5d7e2;
+    border-radius: 7px 7px 7px 7px;
+    background: white;
+}
+
+.reportcontent .km-content
+{
+    background: white !important;
+}
+
+.chartMargin { margin: 10px}
+
+/********************Chart region ends here*************************/
+
+.tugal
+{
+    display: block; float: left;
+    height: 10px;
+    padding: 4px 2px 0 14px;
+    /*padding: 0 19px 0 0;*/
+    background: url(../images/tugal_right.png) top right no-repeat;
+}
+.tugal span
+{
+    display: block; float: left;
+    /*height: 42px; */    
+    font: bold 14px Calibri, Arial, Helvetica, sans-serif; color: #243a72; background: url(../images/tugal_left.png) top left no-repeat; white-space: nowrap
+}
+
+/********************Page loading overlay effect*************************/
 .overlayeffect { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #657383; opacity: 0.5; z-index: 10000; }
+
+.overlayeffecttest { position: fixed; top: 0; left: 0; width: 503px; height: 603px; background-color: #657383; opacity: 0.5; z-index: 10000; }
+
+.overlayeffectEmailPopup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #16273d; opacity: 0.9; z-index: 10000; }
+/********************Page loading overlay effect ends here*************************/
+
+.validateDate span.k-tooltip { padding: 5px 0px 0px 5px !important; }
+/*.validateNumber span.k-tooltip { padding: 5px 0px 0px 27px !important; }*/
+.DeptDeclinesearch input[type=text] { width: 150px}
+
+.fleetPopup .k-widget .k-picker-wrap, .fleetPopup .k-widget .k-numeric-wrap
+{
+    border-color: #c5c5c5;
+    background-color: #e9e9e9;
+    width: 100px;
+}
+
+@media only screen and (max-height: 1280px) and (orientation: landscape)
+{
+    .mylist_img { float: left; height: 87px; width: 248px; margin-right: 20px; }
+    .mylist h3 { margin: 31px 40px 0 0; padding: 17px 0 0 0; font-size: 20px; text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5); }
+    .km-tablet .km-android .logo img
+    {
+        width: 100%;
+        margin: 18% 0% 0% 36%;
+    }
+    .km-tablet .km-android .login
+    {
+        background-size: 100%;
+        width: 387px;
+        font-size: 100%;
+        margin: 2% 0% 0% 41%;
+        padding: 40px 0 0 0;
+    }
+}
+
+@media only screen and (max-height: 1280px) and (orientation: portrait)
+{
+    .mylist_img { float: left; height: 87px; width: 248px; margin-right: 20px; }
+    .mylist h3 { margin: 31px 40px 0 0; padding: 17px 0 0 0; font-size: 20px; text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5); }
+    .km-tablet .km-android .logo img
+    {
+        width: 100%;
+        margin: 18% 0% 0% 28%;
+    }
+    .km-tablet .km-android .login
+    {
+        background-size: 100%;
+        width: 387px;
+        font-size: 100%;
+        margin: 2% 0% 0% 30%;
+        padding: 40px 0 0 0;
+    }
+    .mylist .km-button
+    {
+        border-radius: 0;
+    }
+}
+
+@media only screen and (orientation: landscape)
+{
+    .loginBackground
+    {
+        background: url(../images/bg_h1.jpg);
+        background-size: 100% 100%;
+        width: 100% !important;
+        height: 100% !important;
+        position: relative;
+    }
+
+    .mainBackgroundWithFooter
+    {
+        background: url(../images/bg_h2.jpg);
+        background-size: 100% 100%;
+        width: 100% !important;
+        height: 100% !important;
+        position: relative;
+    }
+    .mylist .km-button
+    {
+        border-radius: 0;
+    }
+}
+
+.label
+{
+    font-weight: bold;
+}
+
+.searchButton
+{
+    border-radius: 0 !important;
+    border: 0 !important;
+    padding: 5px !important;
+    vertical-align: top !important;
+}
+
+.addItem
+{
+    border-radius: 0 !important;
+    border: 0 !important;
+    vertical-align: top !important;
+}
+
+input[type="text"]
+{
+    width: 175px !important
+}

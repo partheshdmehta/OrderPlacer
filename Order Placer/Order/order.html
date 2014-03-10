@@ -6,21 +6,35 @@
     </head>
     <body>
         <div id="tabstrip-home" data-role="view" data-title="Orders" data-before-show="cleanview"  data-show="showOrderList">
-            <div id='orderlistDiv'>
-                <ul id="todoItems"></ul>
-            </div>
+            <div id='orderlistDiv' class='leftnav'></div>
         </div>
         <!--Layout-->
         <div data-role="layout" data-id="tabstrip-layout">
             <!--Header-->
             <div data-role="header">
                 <div data-role="navbar">
-                    <a data-role="button" data-align="left" data-icon="search" data-click="onsearchitem"></a>
+                    <a  data-role="button" href="../Order/ordermanagement.html" data-align="left" data-icon="add"></a>
                     <span data-role="view-title"></span>
-                    <a  data-role="button" href="../Order/ordermanagement.html" data-align="right" data-icon="add"></a>
+                    <a data-role="button" data-align="right" data-click="onLogout">Logout</a>
                 </div>
             </div>
         </div>
+        <script type="text/x-kendo-tmpl" id="order-list-template">
+            <ul id="orderlist">
+                # for (var i = 0; i < data.length; i++) { #
+            <li class="listTemplateStyle">
+                <a >
+                    <span>Order No: #= data[i].ORDERNO # </span>
+                    <br/><span>Customer Name: #= data[i].CUSTOMERNAME #</span>
+                    <br/><span>Date: #= data[i].DATE #</span>
+                    <br/><span>Amount: #= data[i].AMOUNT #</span>
+                </a>
+            </li>
+                # }
+                    
+                #
+            </ul>
+        </script>
         <script src="../scripts/order.js"></script>
     </body>
 </html>

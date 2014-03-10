@@ -1,3 +1,8 @@
 function onlogin() {
-    initLocalDB();
+    app.initLocalDB();
+    app.orderFill();
+}
+
+function onLogout(){
+    navigate("login.html");    
 }
